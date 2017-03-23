@@ -1,0 +1,112 @@
+.table-wrapper {
+  margin: 0 5%;
+}
+
+navbar {
+  display: block;
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 960px;
+}
+
+/*table {*/
+  /*border-collapse: collapse;*/
+  /*width: 100%;*/
+  /*margin: 0 auto;*/
+  /*max-width: 960px;*/
+  /*table-layout: fixed;*/
+  /*border: 1pt solid #ccc;*/
+/*}*/
+
+/*thead {*/
+  /*background-color: #000;*/
+  /*color: #ffffff;*/
+  /*border: none;*/
+  /*box-sizing: border-box;*/
+  /*font-weight: lighter;*/
+/*}*/
+
+/*td {*/
+  /*text-align: center;*/
+/*}*/
+
+/*tr {*/
+  /*height: 50px;*/
+  /*border: 1pt solid #ccc;*/
+/*}*/
+
+caption {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  display: none;
+}
+
+img.logo {
+  max-width: 40px;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+td.team-standings {
+  background-color: #f7f7f7;
+}
+
+ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.tabs li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current {
+  background: #dedede;
+  /*color: #222;*/
+}
+
+.tab-content {
+  display: none;
+  padding: 0 15px;
+}
+
+.tab-content.current {
+  display: inherit;
+}
+
+.change > .arrow{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.change-up {
+  color: #2c2;
+}
+
+.change-down {
+  color: #f00;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid #2c2;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-top: 5px solid #f00;
+}
