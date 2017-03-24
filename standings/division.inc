@@ -7,6 +7,7 @@
     <tbody>
     <?php
     $rank = 1;
+    usort($grouped_teams['Western']['Pacific'], 'standings_sort');
     foreach ($grouped_teams['Western']['Pacific'] as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
@@ -22,6 +23,7 @@
     <tbody>
     <?php
     $rank = 1;
+    usort($grouped_teams['Western']['Central'], 'standings_sort');
     foreach ($grouped_teams['Western']['Central'] as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
@@ -37,6 +39,7 @@
     <tbody>
     <?php
     $rank = 1;
+    usort($grouped_teams['Eastern']['Atlantic'], 'standings_sort');
     foreach ($grouped_teams['Eastern']['Atlantic'] as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
@@ -52,6 +55,7 @@
     <tbody>
     <?php
     $rank = 1;
+    usort($grouped_teams['Eastern']['Metropolitan'], 'standings_sort');
     foreach ($grouped_teams['Eastern']['Metropolitan'] as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;

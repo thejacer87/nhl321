@@ -7,6 +7,7 @@
     <tbody>
     <?php
     $rank = 1;
+    uasort($teams, 'standings_sort');
     foreach ($teams as $team) {
       echo output_table_body($team, $rank, $team['league_rank']);
       $rank++;

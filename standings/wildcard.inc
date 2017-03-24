@@ -7,6 +7,7 @@
     <tbody>
     <?php
     $pac3 = array_slice($grouped_teams['Western']['Pacific'], 0, 3, TRUE);
+    uasort($pac3, 'standings_sort');
     $rank = 1;
     foreach ($pac3 as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
@@ -23,6 +24,7 @@
     <tbody>
     <?php
     $cen3 = array_slice($grouped_teams['Western']['Central'], 0, 3, TRUE);
+    uasort($cen3, 'standings_sort');
     $rank = 1;
     foreach ($cen3 as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
@@ -62,6 +64,7 @@
     <tbody>
     <?php
     $atl3 = array_slice($grouped_teams['Eastern']['Atlantic'], 0, 3, TRUE);
+    uasort($atl3, 'standings_sort');
     $rank = 1;
     foreach ($atl3 as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);
@@ -78,6 +81,7 @@
     <tbody>
     <?php
     $met3 = array_slice($grouped_teams['Eastern']['Metropolitan'], 0, 3, TRUE);
+    uasort($met3, 'standings_sort');
     $rank = 1;
     foreach ($met3 as $team) {
       echo output_table_body($team, $rank, $team['division_rank']);

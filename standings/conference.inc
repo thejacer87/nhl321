@@ -7,6 +7,7 @@
     <tbody>
     <?php
     $rank = 1;
+    uasort($teams, 'standings_sort');
     foreach ($teams as $team) {
       if ($team['conference'] == 'Western') {
         echo output_table_body($team, $rank++, $team['conference_rank']);
@@ -23,6 +24,7 @@
     <tbody>
     <?php
     $rank = 1;
+    uasort($teams, 'standings_sort');
     foreach ($teams as $team) {
       if ($team['conference'] == 'Eastern') {
         echo output_table_body($team, $rank, $team['conference_rank']);
