@@ -1,6 +1,16 @@
 <?php
 
-function output_row($team, $rank, $old_rank = NULL) {
+function output_table_header($headers) {
+  $output = '<thead><tr>';
+
+  foreach ($headers as $header) {
+    $output .= '<th>' . $header . '</th>';
+  }
+
+  return $output . '</tr></thead>';
+}
+
+function output_table_body($team, $rank, $old_rank = NULL) {
   $output = '';
   $logo = $team['team']['logos']['small'];
   $img = '<img class="logo" src="' . $logo . '">';
@@ -8,7 +18,7 @@ function output_row($team, $rank, $old_rank = NULL) {
   $wins = $team['wins'];
   $otw = $team['overtime_wins'];
   $output .= '<tr>';
-  $output .= '<td class="team-standings">' . $rank . $img . $team['team']['medium_name'] . '</td>';
+  $output .= '<td class="team-standings">' . $rank . $img . $team['team']['short_name'] . '</td>';
   $output .= '<td>' . $team['games_played'] . '</td>';
   $output .= '<td>' . ($wins - $otw) . '</td>';
   $output .= '<td>' . $otw . '</td>';

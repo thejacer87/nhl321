@@ -11,7 +11,6 @@ foreach ($teams as &$nhl_team) {
   $grouped_teams[$nhl_team['conference']][$nhl_team['division']][] = $nhl_team;
 }
 
-
 usort($teams, 'standings_sort');
 usort($grouped_teams['Western']['Pacific'], 'standings_sort');
 usort($grouped_teams['Western']['Central'], 'standings_sort');

@@ -1,8 +1,7 @@
-<navbar>
-  <ul class="tabs">
-    <li class="tab-link current" data-tab="wildcard"><a>Wildcard</a></li>
-    <li class="tab-link" data-tab="division"><a>Division</a></li>
-    <li class="tab-link" data-tab="conference"><a>Conference</a></li>
-    <li class="tab-link" data-tab="overall"><a>Overall</a></li>
-  </ul>
-</navbar>
+<ul class="nav nav-pills">
+  <li class="active"><a data-toggle="tab" href="#wildcard">Wild Card</a></li>
+  <li><a data-toggle="tab" href="#division">Division</a></li>
+  <li><a data-toggle="tab" href="#conference">Conference</a></li>
+  <li><a data-toggle="tab" href="#overall">Overall</a></li>
+</ul>
+<div class="tab-content">

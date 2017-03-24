@@ -1,68 +1,41 @@
-<div class="tab-content table-wrapper current" id="wildcard">
+<div id="wildcard" class="tab-pane fade in active table-wrapper">
   <table class="table table-responsive table-bordered" id="pac-wild">
-    <caption>Western</caption>
-    <thead>
-    <tr>
-      <th>Pacific</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Pacific';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $pac3 = array_slice($grouped_teams['Western']['Pacific'], 0, 3, TRUE);
     $rank = 1;
     foreach ($pac3 as $team) {
-      echo output_row($team, $rank, $team['division_rank']);
+      echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
     }
     ?>
     </tbody>
   </table>
   <table class="table table-responsive table-bordered" id="cen-wild">
-    <thead>
-    <tr>
-
-      <th>Central</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Central';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $cen3 = array_slice($grouped_teams['Western']['Central'], 0, 3, TRUE);
     $rank = 1;
     foreach ($cen3 as $team) {
-      echo output_row($team, $rank, $team['division_rank']);
+      echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
     }
     ?>
     </tbody>
   </table>
   <table class="table table-responsive table-bordered" id="west-wild">
-    <thead>
-    <tr>
-
-      <th>Wild Cards</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Wild Cards';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $cen_wild = array_slice($grouped_teams['Western']['Central'], 3, 4, TRUE);
@@ -75,79 +48,49 @@
     usort($wild, 'standings_sort');
     $rank = 1;
     foreach ($wild as $team) {
-      echo output_row($team, $rank, $team['wild_rank']);
+      echo output_table_body($team, $rank, $team['wild_rank']);
       $rank++;
     }
     ?>
     </tbody>
   </table>
-  <br>
-  <br>
   <table class="table table-responsive table-bordered" id="atl-wild">
-    <caption>Eastern</caption>
-    <thead>
-    <tr>
-
-      <th>Atlantic</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Atlantic';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $atl3 = array_slice($grouped_teams['Eastern']['Atlantic'], 0, 3, TRUE);
     $rank = 1;
     foreach ($atl3 as $team) {
-      echo output_row($team, $rank, $team['division_rank']);
+      echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
     }
     ?>
     </tbody>
   </table>
   <table class="table table-responsive table-bordered" id="met-wild">
-    <thead>
-    <tr>
-
-      <th>Central</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Metropolitan';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $met3 = array_slice($grouped_teams['Eastern']['Metropolitan'], 0, 3, TRUE);
     $rank = 1;
     foreach ($met3 as $team) {
-      echo output_row($team, $rank, $team['division_rank']);
+      echo output_table_body($team, $rank, $team['division_rank']);
       $rank++;
     }
     ?>
     </tbody>
   </table>
   <table class="table table-responsive table-bordered" id="east-wild">
-    <thead>
-    <tr>
-
-      <th>Wild Cards</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+    <?php
+    $headers['team'] = 'Wild Cards';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $atl_wild = array_slice($grouped_teams['Eastern']['Atlantic'], 3, 5, TRUE);
@@ -160,7 +103,7 @@
     usort($wild, 'standings_sort');
     $rank = 1;
     foreach ($wild as $team) {
-      echo output_row($team, $rank, $team['wild_rank']);
+      echo output_table_body($team, $rank, $team['wild_rank']);
       $rank++;
     }
     ?>

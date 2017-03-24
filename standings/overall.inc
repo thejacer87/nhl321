@@ -1,24 +1,14 @@
-<div class="tab-content table-wrapper" id="overall">
-  <table>
-    <caption>Overall</caption>
-    <thead>
-    <tr>
-
-      <th>Team</th>
-      <th>GP</th>
-      <th>W</th>
-      <th>OTW</th>
-      <th>OTL</th>
-      <th>L</th>
-      <th>Points</th>
-      <th>Change</th>
-    </tr>
-    </thead>
+<div id="overall" class="tab-pane fade">
+  <table class="table table-responsive table-bordered">
+    <?php
+    $headers['team'] = 'Overall';
+    print output_table_header($headers);
+    ?>
     <tbody>
     <?php
     $rank = 1;
     foreach ($teams as $team) {
-      echo output_row($team, $rank, $team['league_rank']);
+      echo output_table_body($team, $rank, $team['league_rank']);
       $rank++;
     }
     ?>

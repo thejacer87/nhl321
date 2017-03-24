@@ -1,3 +1,4 @@
+<?php include_once('includes/globals.inc'); ?>
 <?php include_once('includes/standings.inc'); ?>
 <?php include_once('includes/helper.inc'); ?>
 
