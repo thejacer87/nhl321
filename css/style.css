@@ -78,3 +78,13 @@ td.team-standings {
 .arrow-down {
   border-top: 5px solid #f00;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  background-color: #2d2d2d;
+}
+
+@media screen and (max-width: 1200px) {
+  span.team-name {
+    display: none;
+  }
+}

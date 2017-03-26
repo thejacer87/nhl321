@@ -18,7 +18,8 @@ function output_table_body($team, $rank, $old_rank = NULL) {
   $wins = $team['wins'];
   $otw = $team['overtime_wins'];
   $output .= '<tr>';
-  $output .= '<td class="team-standings">' . $rank . $img . $team['team']['short_name'] . '</td>';
+  $output .= '<td class="team-standings">' . $rank . $img;
+  $output .= '<span class="team-name">' . $team['team']['short_name'] . '</span></td>';
   $output .= '<td>' . $team['games_played'] . '</td>';
   $output .= '<td>' . ($wins - $otw) . '</td>';
   $output .= '<td>' . $otw . '</td>';
