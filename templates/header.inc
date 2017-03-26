@@ -16,29 +16,6 @@
   <!-- Latest compiled JavaScript -->
   <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
-  <script>
-    CoinWidgetCom.go({
-      wallet_address: '1MqU2LmqNREU49toXq1yfEfPBqin4eG8br',
-      currency: 'bitcoin',
-      counter: 'count',
-      lbl_button: 'Donate',
-      lbl_count: 'donations',
-      lbl_amount: 'BTC',
-      lbl_address: 'Use address below to donate. Thanks!',
-      qrcode: true,
-      alignment: 'bl',
-      decimals: 8,
-      size: "small",
-      color: "dark",
-      countdownFrom: "0",
-      element: "#coinwidget-bitcoin-1MqU2LmqNREU49toXq1yfEfPBqin4eG8br",
-      onShow: function () {
-      },
-      onHide: function () {
-      }
-    });
-  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -47,5 +24,4 @@
   <header>
     <h1>NHL 321 Standings</h1>
     <h5>What if the NHL had 3 point games...</h5>
-    <div class="bitcoin" id="coinwidget-bitcoin-1MqU2LmqNREU49toXq1yfEfPBqin4eG8br"></div>
   </header>
