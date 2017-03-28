@@ -12,7 +12,3 @@ foreach ($teams as &$nhl_team) {
 }
 
 usort($teams, 'standings_sort');
-usort($grouped_teams['Western']['Pacific'], 'standings_sort');
-usort($grouped_teams['Western']['Central'], 'standings_sort');
-usort($grouped_teams['Eastern']['Metropolitan'], 'standings_sort');
-usort($grouped_teams['Eastern']['Atlantic'], 'standings_sort');

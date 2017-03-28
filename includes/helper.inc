@@ -33,7 +33,7 @@ function output_table_body($team, $rank, $old_rank = NULL) {
 }
 
 function output_rank_change($rank, $old_rank) {
-  if (empty($old_rank)) {
+  if (!isset($old_rank)) {
     return '';
   }
 
@@ -50,10 +50,53 @@ function output_rank_change($rank, $old_rank) {
 
 }
 
+// Tie Breakers: W > OTW
 function standings_sort($a, $b) {
-  return $b['new_points'] <=> $a['new_points'];
+  if ($a['new_points'] > $b['new_points']) {
+    return -1;
+  }
+  if ($a['new_points'] < $b['new_points']) {
+    return 1;
+  }
+  $real_wins_a = $a['wins'] - $a['overtime_wins'];
+  $real_wins_b = $b['wins'] - $b['overtime_wins'];
+  if ($real_wins_a > $real_wins_b) {
+    return -1;
+  }
+  if ($real_wins_a < $real_wins_b) {
+    return 1;
+  }
+  if ($a['overtime_wins'] > $b['overtime_wins']) {
+    return -1;
+  }
+  if ($a['overtime_wins'] < $b['overtime_wins']) {
+    return 1;
+  }
+
+  return 0;
 }
 
 function standings_sort_reverse($a, $b) {
-  return $a['new_points'] <=> $b['new_points'];
+  if ($a['new_points'] < $b['new_points']) {
+    return -1;
+  }
+  if ($a['new_points'] > $b['new_points']) {
+    return 1;
+  }
+  $real_wins_a = $a['wins'] - $a['overtime_wins'];
+  $real_wins_b = $b['wins'] - $b['overtime_wins'];
+  if ($real_wins_a < $real_wins_b) {
+    return -1;
+  }
+  if ($real_wins_a > $real_wins_b) {
+    return 1;
+  }
+  if ($a['overtime_wins'] < $b['overtime_wins']) {
+    return -1;
+  }
+  if ($a['overtime_wins'] > $b['overtime_wins']) {
+    return 1;
+  }
+
+  return 0;
 }
