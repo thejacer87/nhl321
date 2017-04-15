@@ -28,6 +28,12 @@ ul a:hover {
   color: #2d2d2d;
 }
 
+@media (max-width: 767px) {
+  select#season {
+    margin-top: 10px;
+  }
+}
+
 /* Bootstrap overrides */
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > td {
