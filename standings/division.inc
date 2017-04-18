@@ -1,4 +1,4 @@
-<div id="division" class="tab-pane fade table-wrapper">
+<div id="division" class="tab-pane fade table-wrapper <?php print $div_active?>">
   <div class="col-md-6">
     <h2 class="sub-header">West</h2>
     <table class="table table-responsive table-bordered" id="pac-div">
@@ -11,7 +11,7 @@
       $rank = 1;
       usort($grouped_teams['Western']['Pacific'], 'standings_sort');
       foreach ($grouped_teams['Western']['Pacific'] as $team) {
-        echo output_table_body($team, $rank, $team['division_rank']);
+        echo output_table_body($team, $rank, $team->div_rank);
         $rank++;
       }
       ?>
@@ -27,7 +27,7 @@
       $rank = 1;
       usort($grouped_teams['Western']['Central'], 'standings_sort');
       foreach ($grouped_teams['Western']['Central'] as $team) {
-        echo output_table_body($team, $rank, $team['division_rank']);
+        echo output_table_body($team, $rank, $team->div_rank);
         $rank++;
       }
       ?>
@@ -46,7 +46,7 @@
       $rank = 1;
       usort($grouped_teams['Eastern']['Atlantic'], 'standings_sort');
       foreach ($grouped_teams['Eastern']['Atlantic'] as $team) {
-        echo output_table_body($team, $rank, $team['division_rank']);
+        echo output_table_body($team, $rank, $team->div_rank);
         $rank++;
       }
       ?>
@@ -62,7 +62,7 @@
       $rank = 1;
       usort($grouped_teams['Eastern']['Metropolitan'], 'standings_sort');
       foreach ($grouped_teams['Eastern']['Metropolitan'] as $team) {
-        echo output_table_body($team, $rank, $team['division_rank']);
+        echo output_table_body($team, $rank, $team->div_rank);
         $rank++;
       }
       ?>

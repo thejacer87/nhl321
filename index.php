@@ -11,5 +11,3 @@
 <?php include_once('standings/overall.inc'); ?>
 
 <?php include_once('templates/footer.inc'); ?>
-
-

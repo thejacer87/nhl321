@@ -1,6 +1,6 @@
-<div id="overall" class="tab-pane fade">
-  <h2 class="sub-header">League Standings</h2>
+<div id="overall" class="tab-pane fade <?php print $ovr_active ?>">
   <div class="col-lg-12">
+    <h2 class="sub-header">League Standings</h2>
     <table class="table table-responsive table-bordered">
       <?php
       $headers['team'] = 'Teams';
@@ -9,10 +9,10 @@
       <tbody>
       <?php
       $rank = 1;
-      uasort($teams, 'standings_sort');
-      foreach ($teams as $team) {
-        echo output_table_body($team, $rank, $team['league_rank']);
-        $rank++;
+      $league = array_merge($grouped_teams['Eastern']['Atlantic'], $grouped_teams['Eastern']['Metropolitan'], $grouped_teams['Western']['Pacific'], $grouped_teams['Western']['Central']);
+      uasort($league, 'standings_sort');
+      foreach ($league as $team) {
+        echo output_table_body($team, $rank++, $team->league_rank);
       }
       ?>
       </tbody>
