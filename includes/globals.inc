@@ -10,3 +10,10 @@ $headers = array(
   'points' => 'Points',
   'change' => 'Change',
 );
+
+define('WESTERN', 5);
+define('EASTERN', 6);
+define('PACIFIC', 15);
+define('CENTRAL', 16);
+define('ATLANTIC', 17);
+define('METRO', 18);

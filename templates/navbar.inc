@@ -39,18 +39,27 @@ switch ($view) {
 
 ?>
 <div id="standings">
-<div class="row">
-  <div class="col-sm-8 col-xs-12">
-    <ul class="nav nav-pills">
-      <li class="<?php print $wc_active; ?>"><a data-toggle="tab" id="wc" href="#wildcard">Wild Card</a></li>
-      <li class="<?php print $div_active; ?>"><a data-toggle="tab" id="div" href="#division">Division</a></li>
-      <li class="<?php print $conf_active; ?>"><a data-toggle="tab" id="conf" href="#conference">Conference</a></li>
-      <li class="<?php print $ovr_active; ?>"><a data-toggle="tab" id="ovr" href="#overall">Overall</a></li>
-    </ul>
+  <div class="row">
+    <div class="col-sm-8 col-xs-12">
+      <ul class="nav nav-pills">
+        <li class="<?php print $wc_active; ?>"><a data-toggle="tab" id="wc"
+                                                  href="#wildcard">Wild Card</a>
+        </li>
+        <li class="<?php print $div_active; ?>"><a data-toggle="tab" id="div"
+                                                   href="#division">Division</a>
+        </li>
+        <li class="<?php print $conf_active; ?>"><a data-toggle="tab" id="conf"
+                                                    href="#conference">Conference</a>
+        </li>
+        <li class="<?php print $ovr_active; ?>"><a data-toggle="tab" id="ovr"
+                                                   href="#overall">Overall</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4 col-xs-8">
+      <div id="loading"><img src="../gfx/loading.gif"></div>
+      <select class="form-control col-md-2" name="season" id="season">
+        <?php print $options; ?>
+      </select>
+    </div>
   </div>
-  <div class="col-sm-4 col-xs-4">
-    <select class="form-control col-md-2" name="season" id="season">
-      <?php print $options; ?>
-    </select>
-  </div>
-</div>

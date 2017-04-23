@@ -1,22 +1,25 @@
-.bitcoin {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
 img.logo {
   max-width: 40px;
   vertical-align: middle;
   margin: 0 5px;
 }
 
-header {
+header,
+footer {
   background-color: #2d2d2d;
   color: #FFFFFF;
   padding: 20px;
   text-align: center;
   margin-bottom: 15px;
   position: relative;
+}
+
+footer {
+  margin: 0;
+}
+
+footer a:hover {
+  color: #7EB1DC;
 }
 
 ul a {
@@ -26,12 +29,6 @@ ul a {
 ul a:hover {
   text-decoration: none;
   color: #2d2d2d;
-}
-
-@media (max-width: 767px) {
-  select#season {
-    margin-top: 10px;
-  }
 }
 
 /* Bootstrap overrides */
@@ -47,8 +44,8 @@ ul a:hover {
 }
 
 /* END Bootstrap overrides */
-#west-wild tbody > tr:nth-child(2),
-#east-wild tbody > tr:nth-child(2) {
+
+table.wildcard tbody > tr:nth-child(2) {
   border-bottom: 10px solid #aaa;
 }
 
@@ -89,8 +86,77 @@ td.team-standings {
   background-color: #2d2d2d;
 }
 
+.tie-breaker-wrapper h3 {
+  cursor: pointer;
+  margin: 0 0 20px;
+}
+
+.tie-breaker-wrapper h3 a {
+  color: #999;
+
+}
+
+.tie-breaker-wrapper h3 a:hover {
+  color: #666;
+  text-decoration: none;
+}
+
+.icon {
+  position: relative;
+  width: 4px;
+  height: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  top: -7px;
+  left: 6px;
+}
+
+.icon .one, .icon .two {
+  position: absolute;
+  width: 4px;
+  height: 16px;
+  background: #999;
+  transform-origin: 50% 50%;
+  transition: 0.5s all ease;
+}
+
+.icon .one {
+  transform: rotate(-90deg);
+}
+
+.icon.transform .one, .icon.transform .two {
+  transform: rotate(90deg);
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#loading {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: -40px;
+  top: -10px;
+}
+
+#loading img {
+  width: 100%;
+}
+
 @media screen and (max-width: 1200px) {
   span.team-name {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  #loading {
+    left: 270px;
+    top: -1px;
+  }
+  select#season {
+    margin-top: 10px;
   }
 }
