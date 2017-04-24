@@ -51,7 +51,7 @@ $metro_teams = $teams[EASTERN][METRO];
   <div id="overall" class="tab-pane fade <?php print $ovr_active ?>">
     <div class="col-lg-12">
       <h2 class="sub-header">League Standings</h2>
-      <table class="table table-responsive table-bordered">
+      <table class="standings table table-responsive table-bordered">
         <?php
         $headers['team'] = 'Teams';
         print get_table_header($headers);
@@ -71,12 +71,12 @@ $metro_teams = $teams[EASTERN][METRO];
 </div>
 <div class="tie-breaker-wrapper">
   <h3>
+    <a data-toggle="collapse" data-target="#tie-breaker-list">
     <div class="icon">
       <div class="one"></div>
       <div class="two"></div>
     </div>
-    <a data-toggle="collapse" data-target="#tie-breaker-list">Tie-Breaking
-      Procedure</a></h3>
+      Tie-Breaking Procedure</a></h3>
   <div id="tie-breaker-list"
        class="collapse">
     <ol>

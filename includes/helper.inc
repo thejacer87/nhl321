@@ -99,7 +99,7 @@ function get_wild_standings($conference, $divisions) {
   $output .= $conference . '</h2>';
   foreach ($divisions as $name => $division) {
     $wildcards[] = array_slice($division, 3);
-    $output .= '<table class="table table-responsive table-bordered">';
+    $output .= '<table class="standings table table-responsive table-bordered">';
     $headers['team'] = $name;
     $output .= get_table_header($headers);
     $output .= '<tbody>';
@@ -113,7 +113,7 @@ function get_wild_standings($conference, $divisions) {
 
   $headers['team'] = 'Wild Cards';
 
-  $output .= '<table class="table table-responsive table-bordered wildcard">';
+  $output .= '<table class="standings table table-responsive table-bordered wildcard">';
   $output .= get_table_header($headers);
   $output .= '<tbody>';
 
@@ -132,7 +132,7 @@ function get_division_standings($conference, $divisions) {
   $output = '<div class="col-md-6"><h2 class="sub-header">';
   $output .= $conference . '</h2>';
   foreach ($divisions as $name => $division) {
-    $output .= '<table class="table table-responsive table-bordered">';
+    $output .= '<table class="standings table table-responsive table-bordered">';
     $headers['team'] = $name;
     $output .= get_table_header($headers);
     $output .= '<tbody>';
@@ -148,7 +148,7 @@ function get_division_standings($conference, $divisions) {
 
 function get_conference_standings($conference, $divisions) {
   global $headers;
-  $output = '<div class="col-md-6"><table class="table table-responsive table-bordered">';
+  $output = '<div class="col-md-6"><table class="standings table table-responsive table-bordered">';
   $headers['team'] = $conference;
   $output .= get_table_header($headers);
   $output .= '<tbody>';

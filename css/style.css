@@ -31,25 +31,22 @@ ul a:hover {
   color: #2d2d2d;
 }
 
-/* Bootstrap overrides */
-.table-bordered > thead > tr > th,
-.table-bordered > tbody > tr > td {
+.standings.table-bordered > thead > tr > th,
+.standings.table-bordered > tbody > tr > td {
   border-right: none;
   border-left: none;
 }
 
-.table-bordered > thead {
+.standings.table-bordered > thead {
   background: #2d2d2d;
   color: #FFF;
 }
-
-/* END Bootstrap overrides */
 
 table.wildcard tbody > tr:nth-child(2) {
   border-bottom: 10px solid #aaa;
 }
 
-td.team-standings {
+.standings td.team-standings {
   background-color: #f7f7f7;
 }
 
@@ -82,7 +79,9 @@ td.team-standings {
   border-top: 5px solid #f00;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
   background-color: #2d2d2d;
 }
 
@@ -156,6 +155,7 @@ td.team-standings {
     left: 270px;
     top: -1px;
   }
+
   select#season {
     margin-top: 10px;
   }
