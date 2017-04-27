@@ -85,6 +85,10 @@ table.wildcard tbody > tr:nth-child(2) {
   background-color: #2d2d2d;
 }
 
+.tie-breaker-wrapper {
+  margin-bottom: 20px;
+}
+
 .tie-breaker-wrapper h3 {
   cursor: pointer;
   margin: 0 0 20px;
