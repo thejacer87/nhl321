@@ -1,4 +1,4 @@
-<div class="tie-breaker-wrapper">
+<div class="tie-breaker-wrapper information">
   <h3>
     <a data-toggle="collapse" data-target="#tie-breaker-list">
       <div class="icon">

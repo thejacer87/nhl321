@@ -7,7 +7,7 @@ $headers = array(
   'otw' => 'OTW',
   'otl' => 'OTL',
   'l' => 'L',
-  'points' => 'Points',
+  'points' => 'PTS',
   'change' => 'Change',
 );
 

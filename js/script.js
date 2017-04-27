@@ -17,7 +17,11 @@
     });
 
     $('.tie-breaker-wrapper h3').click(function () {
-      $('.icon').toggleClass('transform');
+      $('.tie-breaker-wrapper .icon').toggleClass('transform');
+    });
+
+    $('.points-breakdown-wrapper h3').click(function () {
+      $('.points-breakdown-wrapper .icon').toggleClass('transform');
     });
   });
 })(jQuery);
