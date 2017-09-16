@@ -1,0 +1,53 @@
+/*
+ * Box Sizing
+ *
+ * Set that shit to border-box, yo. And fix those pesky pseudo elements
+ */
+
+/*==========================================================================
+   Border-box all the things!
+==========================================================================*/
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.html {
+  background: $c-grey;
+}
+
+body {
+  color: $dark-grey;
+  background: $c-grey;
+  max-width: none;
+  margin: 0;
+
+  #app {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
