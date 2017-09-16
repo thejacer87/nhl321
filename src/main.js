@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import { Tabs, Tab } from 'vue-tabs-component'
+
+Vue.component('tabs', Tabs)
+Vue.component('tab', Tab)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -11,5 +16,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {App},
 })
