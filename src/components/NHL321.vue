@@ -1,23 +1,23 @@
 <template>
   <div class="nhl321">
-    <h1>NHL 321</h1>
-    <h4>Returning soon for 2017/18 season...</h4>
     <div>
-      <tabs>
-        <tab name="Wild Card">
+      <b-tabs pills>
+        <b-tab title="Wild Card" active>
           <wildcard></wildcard>
-        </tab>
-        <tab name="Division">
+        </b-tab>
+        <b-tab title="Division">
           <division></division>
-        </tab>
-        <tab name="Conference">
+        </b-tab>
+        <b-tab title="Conference">
           <conference></conference>
-        </tab>
-        <tab name="Overall">
+        </b-tab>
+        <b-tab title="Overall">
           <overall></overall>
-        </tab>
-      </tabs>
+        </b-tab>
+      </b-tabs>
     </div>
+    <points-breakdown></points-breakdown>
+    <tie-breaker></tie-breaker>
   </div>
 </template>
 
@@ -26,6 +26,8 @@
   import Division from '@/components/standings/Division'
   import Conference from '@/components/standings/Conference'
   import Overall from '@/components/standings/Overall'
+  import PointsBreakdown from '@/components/PointsBreakdown'
+  import TieBreaker from '@/components/TieBreaker'
 
   export default {
     name: 'kickstart',
@@ -34,11 +36,13 @@
       Division,
       Conference,
       Overall,
+      PointsBreakdown,
+      TieBreaker,
     },
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../assets/styles/partials/mixins';
   @import '../assets/styles/partials/variables';
   @import '../assets/styles/partials/nhl321';

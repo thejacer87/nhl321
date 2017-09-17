@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-    <router-view></router-view>
+    <div class="container">
+      <app-header></app-header>
+      <router-view></router-view>
+    </div>
     <app-footer></app-footer>
   </div>
 </template>
@@ -14,15 +16,14 @@
     name: 'app',
     components: {
       AppHeader,
-      AppFooter
-    }
+      AppFooter,
+    },
   }
 </script>
 
 <style lang="scss" scoped>
   @import 'assets/styles/partials/mixins';
   @import 'assets/styles/partials/variables';
-
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
