@@ -1,4 +1,14 @@
 .nhl321 {
+  h2 {
+    margin: 20px 0 10px;
+    font-size:30px;
+  }
+
+  img.logo {
+    max-width: 40px;
+    vertical-align: middle;
+    margin: 0 5px;
+  }
 
   .nav-pills {
     .nav-item {
@@ -7,12 +17,12 @@
         &.active {
           color: $white;
           background-color: $dark-grey;
-          &:focus {
+          &:focus, &:hover {
             background-color: $dark-grey;
           }
-          &:hover {
-            background-color: $dark-grey;
-          }
+        }
+        &:hover {
+          background-color: $light-grey;
         }
       }
     }
