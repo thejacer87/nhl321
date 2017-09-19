@@ -15,7 +15,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/styles/partials/mixins';
   @import '../assets/styles/partials/variables';
 
   header {

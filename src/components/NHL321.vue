@@ -43,7 +43,6 @@
 </script>
 
 <style lang="scss">
-  @import '../assets/styles/partials/mixins';
   @import '../assets/styles/partials/variables';
   @import '../assets/styles/partials/nhl321';
 </style>

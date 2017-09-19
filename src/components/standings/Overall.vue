@@ -2,8 +2,8 @@
   <div class="overall">
     <h2>League Standings</h2>
     <b-table striped head-variant="inverse" id="overall"
-             :items="standings" :fields="fields" sort-desc="true"
-             sort-by="team">
+             :items="standings" :fields="fields"
+             sort-by.sync="pts">
       <template slot="team" scope="data">
         <img class="logo " :src="data.item.logo">{{ data.item.team }}
       </template>
@@ -53,7 +53,6 @@
     created: function () {
       this.$http.get('https://api.thescore.com/nhl/standings').then(response => {
         // success callback
-        console.log(response.body)
         this.standings = this.createTable(response.body)
         this.fields = {
           team: {label: 'Teams'},
@@ -75,7 +74,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../assets/styles/partials/mixins';
   @import '../../assets/styles/partials/variables';
 </style>
 
