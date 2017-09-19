@@ -8,6 +8,16 @@
         <template slot="team" scope="data">
           <img class="logo " :src="data.item.logo">{{ data.item.team }}
         </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : 'arrow-down'"></div>
+            {{ Math.abs(data.item.change) }}</span>
+          <span
+          >{{
+            }}</span>
+        </template>
       </b-table>
       <b-table striped head-variant="inverse" id="central"
                :items="central" :fields="central_fields"
@@ -83,6 +93,17 @@
           change: {label: 'Change'},
         }
       },
+      calculateChange (rows) {
+        rows.sort(function (a, b) {
+          return b.pts - a.pts
+        })
+        rows.forEach(function (row, index) {
+          console.log(row)
+          console.log(index + ': ' + row.c_rank)
+          row.change = row.c_rank - index + 1
+        })
+        return rows
+      },
       createWildcardTable (body, conference) {
         let rows = []
         let self = this
@@ -90,7 +111,6 @@
           return obj.conference === conference
         })
         teams.forEach(function (row) {
-          let logo = row.team.logos.small
           let wins = row.wins
           let otwins = row.overtime_wins
           let loss = row.losses
@@ -98,7 +118,7 @@
           let points = self.calculatePoints(wins, otwins, otloss)
           let standing = {
             team: row.team.abbreviation,
-            logo: logo,
+            logo: row.team.logos.small,
             gp: row.games_played,
             w: wins,
             otw: otwins,
@@ -106,10 +126,11 @@
             l: loss,
             pts: points,
             change: '',
+            c_rank: row.conference_rank,
           }
           rows.push(standing)
         })
-        return rows
+        return self.calculateChange(rows)
       },
       createTable (body, division) {
         let rows = []
@@ -134,10 +155,11 @@
             l: loss,
             pts: points,
             change: '',
+            c_rank: row.conference_rank,
           }
           rows.push(standing)
         })
-        return rows
+        return self.calculateChange(rows)
       },
       calculatePoints (wins, otwins, otloss) {
         return wins * 3 + otwins * 2 + otloss
