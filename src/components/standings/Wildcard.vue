@@ -3,34 +3,47 @@
     <div class="col-md-6">
       <h2>West</h2>
       <b-table striped head-variant="inverse" id="pacific"
-               :items="pacific" :fields="pacific_fields"
-               sort-by.sync="pts">
+               :items="pacific" :fields="pacific_fields">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
         </template>
         <template slot="change" scope="data">
           <span class="change"
                 :class="data.item.change > 0 ? 'change-up' : 'change-down'">
             <div class="arrow"
-                 :class="data.item.change > 0 ? 'arrow-up' : 'arrow-down'"></div>
-            {{ Math.abs(data.item.change) }}</span>
-          <span
-          >{{
-            }}</span>
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
       <b-table striped head-variant="inverse" id="central"
                :items="central" :fields="central_fields"
                sort-by.sync="pts">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
+        </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
       <b-table striped head-variant="inverse" id="west_wildcard"
                :items="west_wildcard" :fields="west_wildcard_fields"
-               sort-by.sync="pts">
+               sort-by.sync="pts" class="wildcard">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
+        </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
     </div>
@@ -40,21 +53,45 @@
                :items="atlantic" :fields="atlantic_fields"
                sort-by.sync="pts">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
+        </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
       <b-table striped head-variant="inverse" id="metropolitan"
                :items="metro" :fields="metro_fields"
                sort-by.sync="pts">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
+        </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
       <b-table striped head-variant="inverse" id="east_wildcard"
                :items="east_wildcard" :fields="west_wildcard_fields"
-               sort-by.sync="pts">
+               sort-by.sync="pts" class="wildcard">
         <template slot="team" scope="data">
-          <img class="logo " :src="data.item.logo">{{ data.item.team }}
+          {{ data.index + 1 }}<img class="logo"
+                                   :src="data.item.logo">{{ data.item.team }}
+        </template>
+        <template slot="change" scope="data">
+          <span class="change"
+                :class="data.item.change > 0 ? 'change-up' : 'change-down'">
+            <div class="arrow"
+                 :class="data.item.change > 0 ? 'arrow-up' : data.item.change < 0 ? 'arrow-down' : ''"></div>
+            {{ data.item.change ? Math.abs(data.item.change) : '' }}</span>
         </template>
       </b-table>
     </div>
@@ -93,22 +130,27 @@
           change: {label: 'Change'},
         }
       },
-      calculateChange (rows) {
+      calculateChange (rows, offset) {
         rows.sort(function (a, b) {
           return b.pts - a.pts
         })
         rows.forEach(function (row, index) {
-          console.log(row)
-          console.log(index + ': ' + row.c_rank)
-          row.change = row.c_rank - index + 1
+          row.change = row.rank - (index + offset)
         })
         return rows
       },
-      createWildcardTable (body, conference) {
+      createWildcardTable (body, conference, divisionLeaders) {
         let rows = []
         let self = this
-        let teams = body.filter(function (obj) {
-          return obj.conference === conference
+        let leaders = []
+        divisionLeaders.forEach(function (leader) {
+          leaders.push(leader.team)
+        })
+        // Filter out the division leaders.
+        let teams = body.filter(function (team) {
+          let conf = team.conference === conference
+          let leader = leaders.indexOf(team.team.abbreviation)
+          return conf && leader < 0
         })
         teams.forEach(function (row) {
           let wins = row.wins
@@ -120,17 +162,17 @@
             team: row.team.abbreviation,
             logo: row.team.logos.small,
             gp: row.games_played,
-            w: wins,
+            w: wins - otwins,
             otw: otwins,
             otl: otloss,
             l: loss,
             pts: points,
             change: '',
-            c_rank: row.conference_rank,
+            rank: row.conference_rank,
           }
           rows.push(standing)
         })
-        return self.calculateChange(rows)
+        return self.calculateChange(rows, 7)
       },
       createTable (body, division) {
         let rows = []
@@ -139,6 +181,7 @@
           return obj.division === division
         })
         teams.forEach(function (row) {
+          let team = row.team.abbreviation
           let logo = row.team.logos.small
           let wins = row.wins
           let otwins = row.overtime_wins
@@ -146,23 +189,23 @@
           let otloss = row.overtime_losses
           let points = self.calculatePoints(wins, otwins, otloss)
           let standing = {
-            team: row.team.abbreviation,
+            team: team,
             logo: logo,
             gp: row.games_played,
-            w: wins,
+            w: wins - otwins,
             otw: otwins,
             otl: otloss,
             l: loss,
             pts: points,
             change: '',
-            c_rank: row.conference_rank,
+            rank: row.division_rank,
           }
           rows.push(standing)
         })
-        return self.calculateChange(rows)
+        return self.calculateChange(rows, 1).slice(0, 3)
       },
       calculatePoints (wins, otwins, otloss) {
-        return wins * 3 + otwins * 2 + otloss
+        return (wins - otwins) * 3 + otwins * 2 + otloss
       },
     },
     created: function () {
@@ -177,8 +220,8 @@
         this.atlantic = this.createTable(response.body, 'Atlantic')
         this.metro = this.createTable(response.body, 'Metropolitan')
 
-        this.west_wildcard = this.createWildcardTable(response.body, 'Western')
-        this.east_wildcard = this.createWildcardTable(response.body, 'Eastern')
+        this.west_wildcard = this.createWildcardTable(response.body, 'Western', this.pacific.concat(this.central))
+        this.east_wildcard = this.createWildcardTable(response.body, 'Eastern', this.atlantic.concat(this.metro))
         this.west_wildcard_fields = this.createFields('Wildcard')
         this.east_wildcard_fields = this.createFields('Wildcard')
       }, response => {
@@ -189,8 +232,11 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-  @import '../../assets/styles/partials/variables';
+<style lang="scss">
+  table.wildcard {
+    tr:nth-child(2) {
+      border-bottom: 10px solid grey;
+    }
+  }
 </style>
 
