@@ -15,6 +15,7 @@
         <li>OT/SO Losses (<strong>OTL</strong>) - <strong>1
           point</strong></li>
         <li>Losses (<strong>L</strong>) - <strong>0 points</strong></li>
+        <li>Change - The change in the standings relative to current format of the NHL Standings</li>
       </ul>
     </b-collapse>
   </div>
