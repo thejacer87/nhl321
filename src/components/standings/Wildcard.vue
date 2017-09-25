@@ -117,113 +117,22 @@
         east_wildcard_fields: [],
       }
     },
-    methods: {
-      createFields (division) {
-        return {
-          team: {label: division},
-          gp: {label: 'GP'},
-          w: {label: 'W'},
-          otw: {label: 'OTW'},
-          otl: {label: 'OTL'},
-          l: {label: 'L'},
-          pts: {label: 'PTS'},
-          change: {label: 'Change'},
-        }
-      },
-      calculateChange (rows, offset) {
-        rows.sort(function (a, b) {
-          return b.pts - a.pts
-        })
-        rows.forEach(function (row, index) {
-          row.change = row.rank - (index + offset)
-        })
-        return rows
-      },
-      createWildcardTable (body, conference, divisionLeaders) {
-        let rows = []
-        let self = this
-        let leaders = []
-        divisionLeaders.forEach(function (leader) {
-          leaders.push(leader.team)
-        })
-        // Filter out the division leaders.
-        let teams = body.filter(function (team) {
-          let conf = team.conference === conference
-          let leader = leaders.indexOf(team.team.abbreviation)
-          return conf && leader < 0
-        })
-        teams.forEach(function (row) {
-          let wins = row.wins
-          let otwins = row.overtime_wins
-          let loss = row.losses
-          let otloss = row.overtime_losses
-          let points = self.calculatePoints(wins, otwins, otloss)
-          let standing = {
-            team: row.team.abbreviation,
-            logo: row.team.logos.small,
-            gp: row.games_played,
-            w: wins - otwins,
-            otw: otwins,
-            otl: otloss,
-            l: loss,
-            pts: points,
-            change: '',
-            rank: row.conference_rank,
-          }
-          rows.push(standing)
-        })
-        return self.calculateChange(rows, 7)
-      },
-      createTable (body, division) {
-        let rows = []
-        let self = this
-        let teams = body.filter(function (obj) {
-          return obj.division === division
-        })
-        teams.forEach(function (row) {
-          let team = row.team.abbreviation
-          let logo = row.team.logos.small
-          let wins = row.wins
-          let otwins = row.overtime_wins
-          let loss = row.losses
-          let otloss = row.overtime_losses
-          let points = self.calculatePoints(wins, otwins, otloss)
-          let standing = {
-            team: team,
-            logo: logo,
-            gp: row.games_played,
-            w: wins - otwins,
-            otw: otwins,
-            otl: otloss,
-            l: loss,
-            pts: points,
-            change: '',
-            rank: row.division_rank,
-          }
-          rows.push(standing)
-        })
-        return self.calculateChange(rows, 1).slice(0, 3)
-      },
-      calculatePoints (wins, otwins, otloss) {
-        return (wins - otwins) * 3 + otwins * 2 + otloss
-      },
-    },
     created: function () {
       this.$http.get('https://api.thescore.com/nhl/standings').then(response => {
         // success callback
-        this.pacific_fields = this.createFields('Pacific')
-        this.central_fields = this.createFields('Central')
-        this.atlantic_fields = this.createFields('Atlantic')
-        this.metro_fields = this.createFields('Metropolitan')
-        this.pacific = this.createTable(response.body, 'Pacific')
-        this.central = this.createTable(response.body, 'Central')
-        this.atlantic = this.createTable(response.body, 'Atlantic')
-        this.metro = this.createTable(response.body, 'Metropolitan')
+        this.pacific_fields = this.getTableFields('Pacific')
+        this.central_fields = this.getTableFields('Central')
+        this.atlantic_fields = this.getTableFields('Atlantic')
+        this.metro_fields = this.getTableFields('Metropolitan')
+        this.pacific = this.createTable(response.body, 'division', 'Pacific', 'division_rank', 1, true)
+        this.central = this.createTable(response.body, 'division', 'Central', 'division_rank', 1, true)
+        this.atlantic = this.createTable(response.body, 'division', 'Atlantic', 'division_rank', 1, true)
+        this.metro = this.createTable(response.body, 'division', 'Metropolitan', 'division_rank', 1, true)
 
         this.west_wildcard = this.createWildcardTable(response.body, 'Western', this.pacific.concat(this.central))
         this.east_wildcard = this.createWildcardTable(response.body, 'Eastern', this.atlantic.concat(this.metro))
-        this.west_wildcard_fields = this.createFields('Wildcard')
-        this.east_wildcard_fields = this.createFields('Wildcard')
+        this.west_wildcard_fields = this.getTableFields('Wildcard')
+        this.east_wildcard_fields = this.getTableFields('Wildcard')
       }, response => {
         // error callback
         this.error = response

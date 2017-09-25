@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 
+import mixins from './mixins'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -13,6 +14,7 @@ Vue.use(BootstrapVue)
 Vue.use(VueResource)
 
 Vue.config.productionTip = false
+Vue.mixin(mixins)
 
 /* eslint-disable no-new */
 new Vue({
@@ -20,4 +22,5 @@ new Vue({
   router,
   template: '<App/>',
   components: {App},
+  // mixins: [mixin],
 })
