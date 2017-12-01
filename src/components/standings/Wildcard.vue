@@ -118,7 +118,7 @@
       }
     },
     created: function () {
-      this.$http.get('https://api.thescore.com/nhl/standings').then(response => {
+      this.$http.get('https://cors-anywhere.herokuapp.com/https://api.thescore.com/nhl/standings').then(response => {
         // success callback
         this.pacific_fields = this.getTableFields('Pacific')
         this.central_fields = this.getTableFields('Central')

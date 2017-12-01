@@ -28,7 +28,7 @@
       }
     },
     created: function () {
-      this.$http.get('https://api.thescore.com/nhl/standings').then(response => {
+      this.$http.get('https://cors-anywhere.herokuapp.com/https://api.thescore.com/nhl/standings').then(response => {
         // success callback
         this.standings = this.createTable(response.body, null, null, 'league_rank', 1)
         this.fields = this.getTableFields('Team')

@@ -48,7 +48,7 @@
       }
     },
     created: function () {
-      this.$http.get('https://api.thescore.com/nhl/standings').then(response => {
+      this.$http.get('https://cors-anywhere.herokuapp.com/https://api.thescore.com/nhl/standings').then(response => {
         // success callback
         this.west = this.createTable(response.body, 'conference', 'Western', 'conference_rank', 1)
         this.west_fields = this.getTableFields('Western')
